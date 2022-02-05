@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Regression testing Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="1">
+    <listeners>
+        <listener class-name="com.ct.framework.listeners.AllureListener"/>
+    </listeners>
+  <test name="All tests" >
+    <classes>
+       <class name="com.ct.tests.login.LoginTest" />
+    </classes>
+  </test>
+ </suite>
