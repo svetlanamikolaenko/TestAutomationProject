@@ -1,4 +1,4 @@
-package com.ct.tests;
+package com.rozetka.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
