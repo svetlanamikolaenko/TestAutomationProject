@@ -1,26 +1,36 @@
 package com.rozetka.tests.login;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
+import com.rozetka.components.LoginPopup;
+import com.rozetka.enums.Customers;
+import com.rozetka.models.Customer;
+import com.rozetka.pages.HomePage;
+import com.rozetka.pages.ProfilePage;
+import com.rozetka.tests.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.*;
+public class LoginTest extends BaseTest {
+    HomePage homePage;
+    LoginPopup loginPopup;
+    ProfilePage profilePage;
+    Customer customer;
 
-public class LoginTest {
-
-    @BeforeClass
-    public static void setUp() {
-        closeWebDriver();
-        Configuration.baseUrl = "https://rozetka.com.ua";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+    @BeforeMethod
+    public void setUp() {
+        customer = Customers.TEST_USER.getCustomer();
+        homePage = new HomePage();
+        loginPopup = new LoginPopup();
+        profilePage = new ProfilePage();
+        homePage.openPage();
     }
 
     @Test
     public void verifyLoginTest() {
-        open("/");
-        Assert.assertEquals(title(), "Интернет-магазин ROZETKA™: официальный сайт самого популярного онлайн-гипермаркета в Украине");
+        homePage.openLoginPopup();
+        loginPopup.loginAs(customer);
+        profilePage.openPage();
+        String actualUserEmail = profilePage.getUserEmail();
+        Assert.assertEquals(actualUserEmail, customer.getEmail());
     }
 }
