@@ -13,6 +13,7 @@ public abstract class BaseTest {
         Configuration.baseUrl = "https://rozetka.com.ua";
         Configuration.browser = WebDriverRunner.CHROME;
         Configuration.startMaximized = true;
+        Configuration.timeout = 5000;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 }
