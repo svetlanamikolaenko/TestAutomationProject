@@ -45,7 +45,8 @@ public class LoginTest extends BaseTest {
             dependsOnMethods = {"verifyLoginTest"})
     public void verifySurnameChanging(){
         profilePage.openPage();
-        profilePage.personalInfoForm().edit()
+        profilePage.personalInfoForm()
+                .edit()
                 .changeSurname(expectedLastName)
                 .save();
         Assert.assertEquals(profilePage.personalInfoForm().getActualSurname(), expectedLastName);

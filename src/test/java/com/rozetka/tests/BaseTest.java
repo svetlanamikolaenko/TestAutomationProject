@@ -1,19 +1,16 @@
 package com.rozetka.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.rozetka.framework.browser.Browser;
+import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.BeforeClass;
 
 public abstract class BaseTest {
 
     @BeforeClass
+    @Step("Set Parameters")
     public void setParameters() {
-        Configuration.baseUrl = "https://rozetka.com.ua";
-        Configuration.browser = WebDriverRunner.CHROME;
-        Configuration.startMaximized = true;
-        Configuration.timeout = 5000;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+        Browser.setUpBrowser();
     }
 }

@@ -11,7 +11,7 @@ public class HomePage extends AbstractPage {
     @Override
     @Step("Open main page")
     public void openPage(){
-        open( "/");
+        open( BASE_URL + "/");
     }
 
     @Step("Open Login PopUp")

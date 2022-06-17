@@ -1,11 +1,12 @@
 package com.rozetka.enums;
 
+import com.rozetka.framework.config.TestConfig;
 import com.rozetka.models.Customer;
 
 public enum Customers {
     TEST_USER(Customer.newBuilder()
-            .withEmail("ivanenkozanna1@gmail.com")
-            .withPassword("Passw0rd")
+            .withEmail(TestConfig.CONFIG.userEmail())
+            .withPassword(TestConfig.CONFIG.userPassword())
             .build());
 
     private final Customer customer;

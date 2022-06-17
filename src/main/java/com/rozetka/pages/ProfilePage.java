@@ -21,7 +21,7 @@ public class ProfilePage extends AbstractPage {
     @Override
     @Step("Open customers cabinet")
     public void openPage() {
-        open("/cabinet/personal-information/");
+        open(BASE_URL + "/cabinet/personal-information/");
     }
 
     @Step("Get customer email")
