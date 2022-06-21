@@ -5,4 +5,4 @@
 *.iml
 /.allure/
 /allure-results/
-config.properties
+src/test/resources/config.properties
